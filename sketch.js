@@ -6,35 +6,35 @@ var stars = [];
 
 var buttonCol;
 
-var flowerNum;
+var flowerNum, chosenFlower, chosenFlowerD;
 
-let flowerName = ['Aster', 'Bird of Paradise', 'Calla Lilly', 'Chrysanthemum', 'Daffodil', 'Daisy', 'Freesia', 'Gladiolus', 'Heather', ' Hydrangea', 'Iris', 'Lilac', 'Orchid', 'Peony', 'Rose', 'Stock', 'Sunflower', 'Tulip'];
-let flowerDesc = ['Wisdom and Devotion', 'Joy and Paradise', 'Purity and Passion', 'Loyalty and Love', 'Rebirth', 'Innocence and Purity', 'Passion and Joy', 'Strength and Integrity', 'Admiration and Luck', 'Emotion and Understanding', 'Royalty and Faith', 'Tranquility and Passion', 'Admiration and Innocence', 'Romance and Prosperity', 'Love and Passion', 'Beauty and Happiness', 'Adoration and Loyalty', 'Love and Confidence'];
+var flowerName = ['Aster', 'Bird of Paradise', 'Calla Lilly', 'Chrysanthemum', 'Daffodil', 'Daisy', 'Freesia', 'Gladiolus', 'Heather', ' Hydrangea', 'Iris', 'Lilac', 'Orchid', 'Peony', 'Rose', 'Stock', 'Sunflower', 'Tulip'];
+var flowerDesc = ['Wisdom and Devotion', 'Joy and Paradise', 'Purity and Passion', 'Loyalty and Love', 'Rebirth', 'Innocence and Purity', 'Passion and Joy', 'Strength and Integrity', 'Admiration and Luck', 'Emotion and Understanding', 'Royalty and Faith', 'Tranquility and Passion', 'Admiration and Innocence', 'Romance and Prosperity', 'Love and Passion', 'Beauty and Happiness', 'Adoration and Loyalty', 'Love and Confidence'];
 
-/*
+var flowerPhoto = [];
+
 function preload() {
 
-  aster = loadImage();
-  bird = loadImage();
-  calla = loadImage();
-  chrys = loadImage();
-  daffo = loadImage();
-  daisy = loadImage();
-  free = loadImage();
-  glad = loadImage();
-  heath = loadImage();
-  hydra = loadImage();
-  iris = loadImage();
-  lilac = loadImage();
-  orch = loadImage();
-  peony = loadImage();
-  rose = loadImage();
-  stock = loadImage();
-  sun = loadImage();
-  tulip = loadImage();
+  flowerPhoto[0] = loadImage(media/flowers/aster.png);
+  flowerPhoto[1] = loadImage(media/flowers/bird-paradise.png);
+  flowerPhoto[2] = loadImage(media/flowers/calla-lily.png);
+  flowerPhoto[3] = loadImage(media/flowers/chrysanthemum.png);
+  flowerPhoto[4] = loadImage(media/flowers/daffodil.png);
+  flowerPhoto[5] = loadImage(media/flowers/daisy.png);
+  flowerPhoto[6] = loadImage(media/flowers/freesia.png);
+  flowerPhoto[7] = loadImage(media/flowers/gladiolus.png);
+  flowerPhoto[8] = loadImage(media/flowers/heather.png);
+  flowerPhoto[9] = loadImage(media/flowers/hydrangea.png);
+  flowerPhoto[10] = loadImage(media/flowers/iris.png);
+  flowerPhoto[11] = loadImage(media/flowers/lilac.png);
+  flowerPhoto[12] = loadImage(media/flowers/orchid.png);
+  flowerPhoto[13] = loadImage(media/flowers/peony.png);
+  flowerPhoto[14] = loadImage(media/flowers/rose.png);
+  flowerPhoto[15] = loadImage(media/flowers/stock.png);
+  flowerPhoto[16] = loadImage(media/flowers/sunflower.png);
+  flowerPhoto[17] = loadImage(media/flowers/tulip.png);
 
 }
-*/
 
 function setup() {
 
@@ -65,6 +65,9 @@ function draw() {
 
   drawDate();
   drawLuckyFlower();
+  genFlower();
+
+  image(flowerPhoto[1], 200, 100);
 
 }
 
@@ -129,29 +132,29 @@ function drawDate() {
 
 function drawLuckyFlower() {
 
+  /*
   var flowerButton = createButton('Generate Lucky Flower!');
   flowerButton.style('font-size', '12px');
   flowerButton.style('background-color', buttonCol);
   flowerButton.size(200, 20);
   flowerButton.position(width/2 - (100), height/3.75);
   flowerButton.mousePressed(genFlower);
+  */
 
 }
 
 function genFlower() {
 
-  flowerNum = random(0, flowerName.length);
+  flowerNum = int(random(flowerName.length));
 
-  console.log('name ' + flowerName.length);
-  console.log('desc ' + flowerDesc.length);
-  console.log('rand ' + flowerNum);
+  console.log('flower ' + flowerName[flowerNum]);
+  console.log('desc ' + flowerDesc[flowerNum]);
 
-  chosenFlower = flowerName[flowerNum];
-  chosenFlowerD = flowerDesc[flowerNum];
+  textAlign(CENTER);
+  textFont('Courier New');
+  textSize(20);
+  text("Your lucky flower of the day is the " + flowerName[flowerNum] + "\nIt represents " + flowerDesc[flowerNum], width/2, height/1.2);
 
-  console.log('flower ' + chosenFlower);
-  console.log('desc ' + chosenFlowerD);
-
-  text(chosenFlower, 400, 400);
+  image(flowerPhoto[flowerNum], 100, 100);
 
 }
