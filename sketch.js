@@ -15,24 +15,24 @@ var flowerPhoto = [];
 
 function preload() {
 
-  flowerPhoto[0] = loadImage(media/flowers/aster.png);
-  flowerPhoto[1] = loadImage(media/flowers/bird-paradise.png);
-  flowerPhoto[2] = loadImage(media/flowers/calla-lily.png);
-  flowerPhoto[3] = loadImage(media/flowers/chrysanthemum.png);
-  flowerPhoto[4] = loadImage(media/flowers/daffodil.png);
-  flowerPhoto[5] = loadImage(media/flowers/daisy.png);
-  flowerPhoto[6] = loadImage(media/flowers/freesia.png);
-  flowerPhoto[7] = loadImage(media/flowers/gladiolus.png);
-  flowerPhoto[8] = loadImage(media/flowers/heather.png);
-  flowerPhoto[9] = loadImage(media/flowers/hydrangea.png);
-  flowerPhoto[10] = loadImage(media/flowers/iris.png);
-  flowerPhoto[11] = loadImage(media/flowers/lilac.png);
-  flowerPhoto[12] = loadImage(media/flowers/orchid.png);
-  flowerPhoto[13] = loadImage(media/flowers/peony.png);
-  flowerPhoto[14] = loadImage(media/flowers/rose.png);
-  flowerPhoto[15] = loadImage(media/flowers/stock.png);
-  flowerPhoto[16] = loadImage(media/flowers/sunflower.png);
-  flowerPhoto[17] = loadImage(media/flowers/tulip.png);
+  flowerPhoto[0] = loadImage('media/flowers/aster.png');
+  flowerPhoto[1] = loadImage('media/flowers/bird-paradise.png');
+  flowerPhoto[2] = loadImage('media/flowers/calla-lily.png');
+  flowerPhoto[3] = loadImage('media/flowers/chrysanthemum.png');
+  flowerPhoto[4] = loadImage('media/flowers/daffodil.png');
+  flowerPhoto[5] = loadImage('media/flowers/daisy.png');
+  flowerPhoto[6] = loadImage('media/flowers/freesia.png');
+  flowerPhoto[7] = loadImage('media/flowers/gladiolus.png');
+  flowerPhoto[8] = loadImage('media/flowers/heather.png');
+  flowerPhoto[9] = loadImage('media/flowers/hydrangea.png');
+  flowerPhoto[10] = loadImage('media/flowers/iris.png');
+  flowerPhoto[11] = loadImage('media/flowers/lilac.png');
+  flowerPhoto[12] = loadImage('media/flowers/orchid.png');
+  flowerPhoto[13] = loadImage('media/flowers/peony.png');
+  flowerPhoto[14] = loadImage('media/flowers/rose.png');
+  flowerPhoto[15] = loadImage('media/flowers/stock.png');
+  flowerPhoto[16] = loadImage('media/flowers/sunflower.png');
+  flowerPhoto[17] = loadImage('media/flowers/tulip.png');
 
 }
 
@@ -51,23 +51,10 @@ function setup() {
 
 function draw() {
 
-  let smoothR = map(mouseY, 0, height, 255, 0);
-
-  backR = smoothR;
-
-  background(backR, backG, backB);
-
-  for (var i = 0; i < stars.length; i++) {
-
-		stars[i].draw();
-
-  }
-
+  drawBack();
   drawDate();
   drawLuckyFlower();
   genFlower();
-
-  image(flowerPhoto[1], 200, 100);
 
 }
 
@@ -79,6 +66,21 @@ function mousePressed () {
 
   buttonCol = random(100, 256);
 
+}
+
+function drawBack() {
+
+  let smoothR = map(mouseY, 0, height, 255, 0);
+
+  backR = smoothR;
+
+  background(backR, backG, backB);
+
+  for (var i = 0; i < stars.length; i++) {
+
+		stars[i].draw();
+
+  }
 }
 
 function drawDate() {
@@ -125,7 +127,7 @@ function drawDate() {
 
   textAlign(CENTER);
   textFont('Courier New');
-  textSize(20);
+  textSize(25);
   text(dateSentString + dateString + timeSentString + timeString, width/2, height/4.5);
 
 }
@@ -153,8 +155,9 @@ function genFlower() {
   textAlign(CENTER);
   textFont('Courier New');
   textSize(20);
-  text("Your lucky flower of the day is the " + flowerName[flowerNum] + "\nIt represents " + flowerDesc[flowerNum], width/2, height/1.2);
+  text("Your lucky flower of the day is the " + flowerName[flowerNum] + "\nIt represents " + flowerDesc[flowerNum], width/2, height/1.5);
 
-  image(flowerPhoto[flowerNum], 100, 100);
+  imageMode(CENTER);
+  image(flowerPhoto[flowerNum], width/2, height/2);
 
 }
