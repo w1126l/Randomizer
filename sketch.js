@@ -40,6 +40,8 @@ function setup() {
 
   createCanvas(windowWidth, windowHeight);
 
+  frameRate(60);
+
   console.log(windowHeight/2);
 
   for (var i = 0; i < windowHeight/2; i++) {
@@ -47,6 +49,9 @@ function setup() {
 		stars[i] = new Star();
 
   }
+
+  genFlowerNum();
+
 }
 
 function draw() {
@@ -134,20 +139,22 @@ function drawDate() {
 
 function drawLuckyFlower() {
 
-  /*
   var flowerButton = createButton('Generate Lucky Flower!');
   flowerButton.style('font-size', '12px');
   flowerButton.style('background-color', buttonCol);
   flowerButton.size(200, 20);
   flowerButton.position(width/2 - (100), height/3.75);
-  flowerButton.mousePressed(genFlower);
-  */
+  flowerButton.mousePressed(genFlowerNum);
+
+}
+
+function genFlowerNum () {
+
+  flowerNum = int(random(flowerName.length));
 
 }
 
 function genFlower() {
-
-  flowerNum = int(random(flowerName.length));
 
   console.log('flower ' + flowerName[flowerNum]);
   console.log('desc ' + flowerDesc[flowerNum]);
