@@ -1,4 +1,6 @@
 
+var canvas;
+
 var backR = 100, backG = 150, backB = 200;
 var smoothR;
 
@@ -38,16 +40,16 @@ function preload() {
 
 function setup() {
 
-  createCanvas(windowWidth, windowHeight);
+  canvas = createCanvas(windowWidth, windowHeight);
+  canvas.position(0, 0, 'fixed');
+  canvas.style('z-index', '-100');
 
   frameRate(60);
 
   console.log(windowHeight/2);
 
   for (var i = 0; i < windowHeight/2; i++) {
-
 		stars[i] = new Star();
-
   }
 
   genFlowerNum();
@@ -140,8 +142,13 @@ function drawDate() {
 function drawLuckyFlower() {
 
   var flowerButton = createButton('Generate Lucky Flower!');
-  flowerButton.style('font-size', '12px');
-  flowerButton.style('background-color', buttonCol);
+  flowerButton.style('display', 'inline-block');
+  flowerButton.style('font-size', '15px');
+  flowerButton.style('background-color', color(backR + 50, backG + 50, backB + 50));
+  flowerButton.style('text-decoration', 'none');
+  flowerButton.style('border-radius', '10px');
+  flowerButton.style('border', 'none');
+  flowerButton.style('font', 'Courier New');
   flowerButton.size(200, 20);
   flowerButton.position(width/2 - (100), height/3.75);
   flowerButton.mousePressed(genFlowerNum);
@@ -159,12 +166,12 @@ function genFlower() {
   console.log('flower ' + flowerName[flowerNum]);
   console.log('desc ' + flowerDesc[flowerNum]);
 
-  textAlign(CENTER);
-  textFont('Courier New');
-  textSize(20);
-  text("Your lucky flower of the day is the " + flowerName[flowerNum] + "\nIt represents " + flowerDesc[flowerNum], width/2, height/1.5);
-
   imageMode(CENTER);
-  image(flowerPhoto[flowerNum], width/2, height/2);
+  image(flowerPhoto[flowerNum], width/2, height/2.25, 300, 300);
+
+  textAlign(CENTER, CENTER);
+  textFont('Courier New');
+  textSize(25);
+  text("Your lucky flower of the day is the " + flowerName[flowerNum] + "\nIt represents " + flowerDesc[flowerNum], width/2, height/1.65);
 
 }
