@@ -15,7 +15,7 @@ var flowerDesc = ['Wisdom and Devotion', 'Joy and Paradise', 'Purity and Passion
 
 var flowerPhoto = [];
 
-function preload() {
+function preload() { //loads images
 
   flowerPhoto[0] = loadImage('media/flowers/aster.png');
   flowerPhoto[1] = loadImage('media/flowers/bird-paradise.png');
@@ -48,10 +48,12 @@ function setup() {
 
   console.log(windowHeight/2);
 
+  //setup background stars into array
   for (var i = 0; i < windowHeight/2; i++) {
 		stars[i] = new Star();
   }
 
+  //generate first lucky flower of the day
   genFlowerNum();
 
 }
@@ -65,7 +67,7 @@ function draw() {
 
 }
 
-function mousePressed () {
+function mousePressed () { //changes background color on mousepress
 
   backR = random(100, 256);
   backG = random(100, 256);
@@ -75,7 +77,7 @@ function mousePressed () {
 
 }
 
-function drawBack() {
+function drawBack() { //draws background that changes colors
 
   let smoothR = map(mouseY, 0, height, 255, 0);
 
@@ -90,13 +92,13 @@ function drawBack() {
   }
 }
 
-function drawDate() {
+function drawDate() { //returns date and time
 
   let sec = second();
   let min = minute();
   let h = hour();
 
-  let m = month();
+  let m = month(); //changes month integer into the names of the months
   var mText;
   if (m == 1) {
     mText = 'January';
@@ -127,6 +129,7 @@ function drawDate() {
   let d = day();
   let y = year();
 
+  //returning date and time
   var dateSentString = ('Today is: ');
   var dateString = (d + ' ' + mText + ', ' + y);
   var timeSentString = ('\nThe time is: ');
@@ -139,7 +142,7 @@ function drawDate() {
 
 }
 
-function drawLuckyFlower() {
+function drawLuckyFlower() { //shows button for generating flowers
 
   var flowerButton = createButton('Generate Lucky Flower!');
   flowerButton.style('display', 'inline-block');
@@ -155,13 +158,13 @@ function drawLuckyFlower() {
 
 }
 
-function genFlowerNum () {
+function genFlowerNum () { //returns int for number of flowers and descriptions
 
   flowerNum = int(random(flowerName.length));
 
 }
 
-function genFlower() {
+function genFlower() { //returns flower image, name, and description
 
   console.log('flower ' + flowerName[flowerNum]);
   console.log('desc ' + flowerDesc[flowerNum]);
