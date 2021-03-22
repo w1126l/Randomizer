@@ -170,11 +170,11 @@ function genFlower() { //returns flower image, name, and description
   console.log('desc ' + flowerDesc[flowerNum]);
 
   imageMode(CENTER);
-  image(flowerPhoto[flowerNum], width/2, height/2.25, 300, 300);
+  image(flowerPhoto[flowerNum], width/2, height/2.2, 300, 300);
 
   textAlign(CENTER, CENTER);
   textFont('Courier New');
   textSize(25);
-  text("Your lucky flower of the day is the " + flowerName[flowerNum] + "\nIt represents " + flowerDesc[flowerNum], width/2, height/1.65);
+  text("Your lucky flower of the day is the " + flowerName[flowerNum] + "\nIt represents " + flowerDesc[flowerNum], width/2, height/1.5);
 
 }
